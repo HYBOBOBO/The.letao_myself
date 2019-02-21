@@ -67,13 +67,20 @@ $(function () {
             dataType:"json",
             success:function(res) {
                 console.log(res);
-                console.log($("#form").serialize());
+                // console.log($("#form").serialize());
+                if(res.error == 1000) {
+                    alert(res.message)
+                }else if(res.error == 1001) {
+                    alert(res.message)
+                }else if(res.success == "true") {
+                    location.href = "index.html"
+                }
             }
         })
 
     })
 
-    
+
 })
 
 
