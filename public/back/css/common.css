@@ -2,3 +2,14 @@ body {
     background-color: #222d32;
 }
 
+
+.login .header {
+    margin-top: 150px;
+}
+
+.panel-title {
+    font-size: 30px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
