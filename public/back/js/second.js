@@ -62,8 +62,94 @@ $(function () {
     })
 
     // 点击li添加进btn文字区域
-    $(".dropdown-menu").on("click","a",function(){
+    $(".dropdown-menu").on("click", "a", function () {
         var txt = $(this).text();
-        $("#dropdownText").text(txt)
+        $("#dropdownText").text(txt);
+        var id = $(this).data("id")
+        $('[name="categoryId"]').val(id);
+        // 添加完ID,表单验证成功
+        $("#form").data("bootstrapValidator").updateStatus("categoryId", "VALID")
+
     })
+
+    //4. 完成文件上传初始化
+    $("#fileupload").fileupload({
+        dataType: "json",
+        done: function (e, res) {
+            console.log(res);
+            var picUrl = res.result.picAddr
+            console.log(picUrl);
+            
+            $("#addImg").attr("src",picUrl)
+            $('[name="brandLogo"]').val(picUrl)
+
+            // 添加成功后表单验证成功
+            $("#form").data("bootstrapValidator").updateStatus("brandLogo", "VALID")
+        }
+    })
+})
+
+// 表单验证
+$('#form').bootstrapValidator({
+    // 配置 excluded 排除项, 对隐藏域完成校验
+    excluded: [],
+
+    // 配置图标
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+
+    // 配置校验字段列表
+    fields: {
+        // 选择一级分类
+        categoryId: {
+            validators: {
+                notEmpty: {
+                    message: '请选择一级分类'
+                }
+            }
+        },
+        // 输入二级分类名称
+        brandName: {
+            validators: {
+                notEmpty: {
+                    message: '请输入二级分类名称'
+                }
+            }
+        },
+        // 二级分类图片
+        brandLogo: {
+            validators: {
+                notEmpty: {
+                    message: '请选择图片'
+                }
+            }
+        }
+    }
+});
+// 表单验证成功事件
+$("#form").on("success.form.bv",function(e){
+    e.preventDefault;
+    $.ajax({
+        type:"post",
+        url:"/category/addSecondCategory",
+        data:$("#form").serialize(),
+        dataType:"json",
+        success:function(res){
+            if(res.success){
+                $("#addModal").madal("hide");
+                currentPage = 1;
+                render()
+                $("#form").data("bootstrapValidator").resetForm(true)
+                $("#dropdownText").text("请选择一级分类")
+                $("#addImg").attr("src","./images/none.png")
+
+
+            }
+        }
+
+    })
+    
 })
