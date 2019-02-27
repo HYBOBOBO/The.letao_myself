@@ -1,0 +1,43 @@
+.main .m_left {
+    float: left;
+    width: 90px;
+    height: 100%;
+    position: relative;
+}
+.main .m_left a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #666666;
+    background-color: #E3E4E5;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.main .m_left a.current {
+    background-color: #fff;
+    border-right: none;
+}
+
+
+.main .m_right {
+    overflow: hidden;
+    height: 100%;
+    background-color: #fff;
+    position: relative;
+}
+.main .m_right ul li {
+    float: left;
+    width: 33.3%;
+}
+.main .m_right ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.main .m_right ul li a img {
+    width: 70px;
+    height: 50px;
+    margin: 0 auto;
+}

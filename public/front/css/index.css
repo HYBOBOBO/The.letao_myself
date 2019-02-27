@@ -1,0 +1,29 @@
+.nav {
+    padding: 10px;
+}
+.nav ul li {
+    float: left;
+    width: 33.3%;
+}
+.nav ul li a {
+    display: block;
+}
+
+.product {
+    padding: 10px;
+}
+.product ul li {
+    float: left;
+    width: 48%;
+    margin-bottom: 20px;
+}
+.product ul li:nth-child(2n+1) {
+    margin-right: 4%;
+}
+.product ul li a {
+    display: block;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+}
