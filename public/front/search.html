@@ -32,10 +32,24 @@
                     </div>
 
                     <!-- 历史记录 -->
-                    <div class="hty">
-                        <ul>
-                            <li></li>
-                        </ul>
+                    <div class="history">
+                        <!-- <div class="title mui-clearfix">
+                            <span class="mui-pull-left">搜索历史</span>
+                            <span class="btn_empty mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>
+                        </div>
+
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <a href="#" class="mui-pull-left">haha</a>
+                                    <i class="btn_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+                                </li>
+                                <li>
+                                    <a href="#" class="mui-pull-left">haha</a>
+                                    <i class="btn_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+                                </li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -71,6 +85,29 @@
             </ul>
         </div>
     </div>
+
+    <!-- 历史记录模块 -->
+    <script type="text/html" id="search_list">
+        {{if arr.length === 0}}
+        <p>没有更多的历史记录</p>
+        {{else}}
+        <div class="title mui-clearfix">
+            <span class="mui-pull-left">搜索历史</span>
+            <span class="btn_empty mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>
+        </div>
+        
+        <div class="content">
+            <ul>
+                {{each arr v i}}
+                <li>
+                    <a href="#" class="mui-pull-left">{{v}}</a>
+                    <i data-id="{{i}}" class="btn_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+                </li>
+                {{/each}}
+             </ul>
+        </div>
+        {{/if}}
+    </script>
 
 
 

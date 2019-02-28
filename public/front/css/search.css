@@ -17,3 +17,24 @@
     top: 10px;
 
 }
+
+.history {
+    padding: 10px;
+    font-size: 12px;
+    color: #666;
+}
+.history .content ul {
+    border: 1px dashed red;
+}
+.history .content ul li {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dashed red;
+    padding: 0 10px;
+}
+.history .content ul li:last-child {
+    border-bottom: none;
+}
+.history .content ul li i {
+    line-height: 30px;
+}
